@@ -5,11 +5,15 @@ echo "Welcome to the DynamoDB Data Migrator"
 echo "This script will clean your DynamoDB data for a provided AWS account."
 echo "Before starting, make sure your AWS configurations are correct and that 'jq' is installed."
 
-read -p "Enter AWS Profile [default: AWSAdministratorAccess-XXXXXXXX]: " PROFILE
-PROFILE=${PROFILE:-AWSAdministratorAccess-058264404440}
+echo "Enter AWS Profile [default: AWSAdministratorAccess-XXXXXXXX]: " PROFILE
+read -e aws_profile
 
-read -p "Enter AWS Region [default: eu-central-1]: " REGION
-REGION=${REGION:-eu-central-1}
+PROFILE=$aws_profile
+
+echo "Enter AWS Region [default: eu-central-1]: " REGION
+read -e aws_region
+
+REGION=$aws_region
 
 read -p "Enter Max Jobs for Parallel Processing [default: 8]: " MAX_JOBS
 MAX_JOBS=${MAX_JOBS:-8}
